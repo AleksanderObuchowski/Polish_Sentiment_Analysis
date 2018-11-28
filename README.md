@@ -1,4 +1,6 @@
 # Polish_Sentiment_Analysis
+## Descripton on hackmd:
+https://hackmd.io/Nz9iiJDVRCujYjQJ3HG7OA
 ## Files and what do they do?
 
 **data.csv** contains reviews and their score downloaded from mediakrytyk.pl
