@@ -16,24 +16,36 @@ class Classifier:
         file = io.open(filename, 'r', encoding='utf8')
         self.dict = json.load(file)
         file.close()
-
-   def evaluate(self,sentence):
-        words = sentence.replace(",", "").lower().replace(".","").replace("/","").split(" ")
-
-        positive = 1
+   @staticmethod
+   def evaluate(sentence , dictionary_file = 'sentiment.json' , info = True):
+        file = io.open(dictionary_file, 'r', encoding='utf8')
+        dict = json.load(file)
+        file.close()
         
-        negative = 1
+        words = sentence.replace(",", "").lower().replace(".","").replace("/","").split(" ")
+        
+        if(use_class_probabilites):
+            positive = dict["Positive"]
+            negative = dict["Negative"]
+        
+        else:
+            positive = 1
+            negative = 1
+
         for word in words:
-            if word in self.dict["Words"]:
-                if self.info:
-                    print("Word in dictionary")
-                positive *= self.dict["Words"][word]["Positive"]
-                negative *= self.dict["Words"][word]["Negative"]
-        if self.info:
+            if word in dict["Words"]:
+                if info:
+                    print(word + " : Word in dictionary")
+            
+
+                positive *= dict["Words"][word]["Positive"]
+                negative *= dict["Words"][word]["Negative"]
+            
+        if info:
+            print("Sentence score:")
             print("Positive: " +str(positive))
             print("Negative: " + str(negative))
-            if negative<positive:
-                print("The sentence is positve")
+            
         if positive> negative:
             return "Positive"
         elif negative>positive:
@@ -48,19 +60,31 @@ class Classifier:
    @staticmethod
    def loadDictionary(filename):
 
-        file = io.open(filename, 'w', encoding='utf8')
-        json.dump(dict,file)
-        file.close()
-        file =io.open(filename, 'r', encoding='utf8')
-        dictionary = json.load(file)
-        file.close()
+        with open(filename, 'r', encoding='utf8') as file:
+            dictionary = json.load(file)
+        
+
+        
         return dictionary
    @staticmethod
    def updateFile(filename,dictionary):
-        file = io.open(filename, 'w', encoding='utf8')
+        file = codecs.open(filename, 'rw', encoding='utf8')
         json.dump(dictionary, file, ensure_ascii=False)
         file.close
 
+   @staticmethod
+   def preprocess_comments(positive_file='positive_comments_form_score.txt', dictionaryFile = "dictionary.json"):
+        
+        dict = Classifier.loadDictionary(dictionaryFile)
+        
+        
+        file =codecs.open(stopwords_file, 'r', "windows-1250",errors='ignore')
+
+
+
+        with open(positive_file) as f:
+            lines = f.readlines()
+        print(lines[0])
 
    @staticmethod
    def preprocess_reviews(stopwords_file = "stopwords-pl.json",data = "data.csv",dictionaryFile = "dictionary.json",treshold = 5,normalize= False):
@@ -246,4 +270,168 @@ class Classifier:
         print(sentdict["Positive"])
         print(sentdict["Negative"])
         print("Finished succesfully")
+   @staticmethod
+   def accuracy_check():
+
+        m = confusion_matrix()
+        
+        f = codecs.open("data.csv",'r','utf-8',errors='ignore')
+        reader = csv.reader(f)
+
+        i=0
+
+        print(reader)
+
+        positive_sentences = []
+        negative_sentences = []
+
+
+        for row in tqdm(reader):
+            #print("reading row " + str(i))
+            #print(row)
+        
+            if (row!=[]):
+                if row[0]=="Wymaga uzupełnienia.":
+                    continue
+                i+=1
+                if (i <15000):
+                    continue
+
+                
+                
+            
+                if float(row[1]) > treshold+2:
+                    positive_sentences.append(row[0])
+                elif float(row[1]) <= treshold-2:
+                    negative_sentences.append(row[0])
+
+        num_positive_sentences = len(positive_sentences)
+        num_negative_sentences = len(negative_sentences)
+
+
+
+        lower_number = min(num_negative_sentences,num_positive_sentences)
+
+
+
+        if(normalize):
+            
+            num_positive_sentences = lower_number
+            num_negative_sentences = lower_number
+
+
+
+        for i in tqdm(range(num_positive_sentences)):
+            score = Classifier.evaluate(positive_sentences[i])
+            if score == "Positive":
+                        m.TP+=1
+            if score == "Negative":
+                        m.FN+=1
+
+
+        for i in tqdm(range(num_positive_sentences)):
+            score = Classifier.evaluate(negative_sentences[i])
+            if score == "Negative":
+                        m.TN+=1
+            if score == "Positive":
+                        m.FP+=1
+
+
+        print("Finished analyzing " + str(i) + "sentences")
+        m.print_results()
+        m.save_results()
+   @staticmethod
+   def convert_score(data = 'data.csv',lower = 5, upper = 5,positive_file = "positive_comments_form_score.txt",negative_file = "negative_comments_form_score.txt"):
+        f =codecs.open(data,'r',"windows-1250",errors='ignore')
+        reader = csv.reader(f)
+        
+        positive_sentences = []
+        negative_sentences = []
+
+
+     
+        for row in tqdm(reader):
+            
+        
+            if (row!=[]):
+                if row[0]=="Wymaga uzupełnienia.":
+                    continue
+                
+                
+             
+                if float(row[1]) > upper:
+                    positive_sentences.append(row[0])
+                elif float(row[1]) <= lower:
+                    negative_sentences.append(row[0])
+        
+        
+        with open(positive_file,"a") as text_file:
+            text_file.write("\n".join(positive_sentences))
+
+
+        with open(negative_file,"a") as text_file:
+            text_file.write("\n".join(negative_sentences))
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class confusion_matrix(object):
+    TP=0
+    TN=0
+    FP=0
+    FN=0
+    def __init__(self):
+        self.TP=0
+        self.TN=0
+        self.FP=0
+        self.FN=0
+
+
+
+    def print_results(self):
+        print("\n\n\n"+" C O N F U S I O N      M A T R I X" + "\n")
+        print("True Positives: " + str(self.TP))
+        print("True Negatives: " + str(self.TN))
+        print("False Positives: " + str(self.FP))
+        print("False Negatives: " + str(self.FN))
+        print("\n")
+        print("sensitivity: " + str(self.TP/(self.TP + self.FN)))
+        print("specitivity: " + str(self.TN / (self.TN + self.FP)))
+        print("precison: " + str(self.TP / (self.TP + self.FP)))
+        print("accuracy: " + str((self.TP + self.TN) / (self.TP + self.TN + self.FP + self.FN)))
+
+
+    def save_results(self):
+        file = open('matrix_log.txt','a') 
+        file.write("/n")
+        file.write(time.strftime('%d/%m/%Y'))
+        
+        
+        file.write("\n\n\n"+" C O N F U S I O N      M A T R I X  " +time.strftime('%d/%m/%Y ')+time.strftime("%H:%M:%S")+ "\n")
+        file.write("\nTrue Positives: " + str(self.TP))
+        file.write("\nTrue Negatives: " + str(self.TN))
+        file.write("\nFalse Positives: " + str(self.FP))
+        file.write("\nFalse Negatives: " + str(self.FN))
+        file.write("\n")
+        file.write("\nsensitivity: " + str(self.TP/(self.TP + self.FN)))
+        file.write("\nspecitivity: " + str(self.TN / (self.TN + self.FP)))
+        file.write("\nprecison: " + str(self.TP / (self.TP + self.FP)))
+        file.write("\naccuracy: " + str((self.TP + self.TN) / (self.TP + self.TN + self.FP + self.FN)))
+       
+         
+        file.close() 
 

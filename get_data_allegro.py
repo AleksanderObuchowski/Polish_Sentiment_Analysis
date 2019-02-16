@@ -6,8 +6,8 @@ positive_comments_file = "positive_comments.txt"
 
 
 positive_comments = []
-with open(positive_comments_file,"wb") as text_file:
-    for i in tqdm(range(3000)):
+with open(positive_comments_file,"a") as text_file:
+    for i in tqdm(range(1)):
         try: 
 
             j = 1
@@ -26,7 +26,7 @@ with open(positive_comments_file,"wb") as text_file:
             
                 comments = tree.xpath('//span[@class="long-word-wrap"]/text()')
                 positive_comments += comments
-                pickle.dump(comments, text_file)
+                text_file.write("\n".join(comments))
                     
                 j+=1
 
@@ -48,9 +48,9 @@ with open(positive_comments_file,"wb") as text_file:
 
     negative_comments = []
     negative_comments_file ="negative_comments.txt"
-    with open(negative_comments_file,"wb") as text_file:
+    with open(negative_comments_file,"a") as text_file:
 
-        for i in tqdm(range(8000)):
+        for i in tqdm(range(40000,60000)):
             try:
                 j = 1
                 number_of_pages = 1
@@ -68,7 +68,7 @@ with open(positive_comments_file,"wb") as text_file:
                 
                     comments = tree.xpath('//span[@class="long-word-wrap"]/text()')
                     negative_comments += comments
-                    pickle.dump(comments, text_file)
+                    text_file.write("\n".join(comments))
                         
                     j+=1
             except:
