@@ -232,4 +232,329 @@ False Negatives: 685
 sensitivity: 0.8160580021482277
 specitivity: 0.6161335187760779
 precison: 0.9167420814479638
-accuracy: 0.7837047040288093
+accuracy: 0.7837047040288093/n15/02/2019
+
+
+ C O N F U S I O N      M A T R I X  15/02/2019 19:53:33
+
+True Positives: 2821
+True Negatives: 385
+False Positives: 365
+False Negatives: 828
+
+sensitivity: 0.773088517402028
+specitivity: 0.5133333333333333
+precison: 0.8854362837413685
+accuracy: 0.7288020004546488/n15/02/2019
+
+
+ C O N F U S I O N      M A T R I X  15/02/2019 20:57:35
+
+True Positives: 2821
+True Negatives: 385
+False Positives: 365
+False Negatives: 828
+
+sensitivity: 0.773088517402028
+specitivity: 0.5133333333333333
+precison: 0.8854362837413685
+accuracy: 0.7288020004546488/n15/02/2019
+
+
+ C O N F U S I O N      M A T R I X  15/02/2019 23:26:01
+
+True Positives: 1786
+True Negatives: 569
+False Positives: 181
+False Negatives: 1863
+
+sensitivity: 0.4894491641545629
+specitivity: 0.7586666666666667
+precison: 0.9079816980172852
+accuracy: 0.5353489429415776/n15/02/2019
+
+
+ C O N F U S I O N      M A T R I X  15/02/2019 23:28:26
+
+True Positives: 1756
+True Negatives: 570
+False Positives: 180
+False Negatives: 1893
+
+sensitivity: 0.48122773362565086
+specitivity: 0.76
+precison: 0.9070247933884298
+accuracy: 0.5287565355762673/n15/02/2019
+
+
+ C O N F U S I O N      M A T R I X  15/02/2019 23:29:17
+
+True Positives: 801
+True Negatives: 1550
+False Positives: 34
+False Negatives: 1316
+
+sensitivity: 0.3783656117146906
+specitivity: 0.9785353535353535
+precison: 0.9592814371257485
+accuracy: 0.6352337206160498/n15/02/2019
+
+
+ C O N F U S I O N      M A T R I X  15/02/2019 23:29:51
+
+True Positives: 801
+True Negatives: 140
+False Positives: 34
+False Negatives: 763
+
+sensitivity: 0.5121483375959079
+specitivity: 0.8045977011494253
+precison: 0.9592814371257485
+accuracy: 0.5414269275028769/n15/02/2019
+
+
+ C O N F U S I O N      M A T R I X  15/02/2019 23:48:39
+
+True Positives: 801
+True Negatives: 140
+False Positives: 34
+False Negatives: 763
+
+sensitivity: 0.5121483375959079
+specitivity: 0.8045977011494253
+precison: 0.9592814371257485
+accuracy: 0.5414269275028769/n15/02/2019
+
+
+ C O N F U S I O N      M A T R I X  15/02/2019 23:50:20
+
+True Positives: 801
+True Negatives: 140
+False Positives: 34
+False Negatives: 763
+
+sensitivity: 0.5121483375959079
+specitivity: 0.8045977011494253
+precison: 0.9592814371257485
+accuracy: 0.5414269275028769/n15/02/2019
+
+
+ C O N F U S I O N      M A T R I X  15/02/2019 23:52:01
+
+True Positives: 801
+True Negatives: 140
+False Positives: 34
+False Negatives: 763
+
+sensitivity: 0.5121483375959079
+specitivity: 0.8045977011494253
+precison: 0.9592814371257485
+accuracy: 0.5414269275028769/n15/02/2019
+
+
+ C O N F U S I O N      M A T R I X  15/02/2019 23:52:17
+
+True Positives: 801
+True Negatives: 140
+False Positives: 34
+False Negatives: 763
+
+sensitivity: 0.5121483375959079
+specitivity: 0.8045977011494253
+precison: 0.9592814371257485
+accuracy: 0.5414269275028769/n15/02/2019
+
+
+ C O N F U S I O N      M A T R I X  15/02/2019 23:53:00
+
+True Positives: 1127
+True Negatives: 103
+False Positives: 71
+False Negatives: 437
+
+sensitivity: 0.7205882352941176
+specitivity: 0.5919540229885057
+precison: 0.9407345575959933
+accuracy: 0.7077100115074798/n15/02/2019
+
+
+ C O N F U S I O N      M A T R I X  15/02/2019 23:54:42
+
+True Positives: 1441
+True Negatives: 73
+False Positives: 101
+False Negatives: 123
+
+sensitivity: 0.9213554987212276
+specitivity: 0.41954022988505746
+precison: 0.9345006485084306
+accuracy: 0.8711162255466053/n15/02/2019
+
+
+ C O N F U S I O N      M A T R I X  15/02/2019 23:59:19
+
+True Positives: 1441
+True Negatives: 69
+False Positives: 101
+False Negatives: 116
+
+sensitivity: 0.9254977520873474
+specitivity: 0.40588235294117647
+precison: 0.9345006485084306
+accuracy: 0.8743485813549507/n16/02/2019
+
+
+ C O N F U S I O N      M A T R I X  16/02/2019 00:01:45
+
+True Positives: 3305
+True Negatives: 243
+False Positives: 499
+False Negatives: 328
+
+sensitivity: 0.9097164877511699
+specitivity: 0.3274932614555256
+precison: 0.8688222923238696
+accuracy: 0.8109714285714286/n16/02/2019
+
+
+ C O N F U S I O N      M A T R I X  16/02/2019 00:02:17
+
+True Positives: 3305
+True Negatives: 243
+False Positives: 499
+False Negatives: 328
+
+sensitivity: 0.9097164877511699
+specitivity: 0.3274932614555256
+precison: 0.8688222923238696
+accuracy: 0.8109714285714286/n16/02/2019
+
+
+ C O N F U S I O N      M A T R I X  16/02/2019 00:02:24
+
+True Positives: 12404
+True Negatives: 1536
+False Positives: 1335
+False Negatives: 1142
+
+sensitivity: 0.9156946700132881
+specitivity: 0.5350052246603971
+precison: 0.902831355993886
+accuracy: 0.8491198148260949/n16/02/2019
+
+
+ C O N F U S I O N      M A T R I X  16/02/2019 00:07:22
+
+True Positives: 12404
+True Negatives: 1536
+False Positives: 1335
+False Negatives: 1142
+
+sensitivity: 0.9156946700132881
+specitivity: 0.5350052246603971
+precison: 0.902831355993886
+accuracy: 0.8491198148260949/n16/02/2019
+
+
+ C O N F U S I O N      M A T R I X  16/02/2019 00:19:28
+
+True Positives: 900
+True Negatives: 272
+False Positives: 701
+False Negatives: 75
+
+sensitivity: 0.9230769230769231
+specitivity: 0.2795477903391572
+precison: 0.5621486570893192
+accuracy: 0.6016427104722792/n16/02/2019
+
+
+ C O N F U S I O N      M A T R I X  16/02/2019 00:21:23
+
+True Positives: 900
+True Negatives: 272
+False Positives: 701
+False Negatives: 75
+
+sensitivity: 0.9230769230769231
+specitivity: 0.2795477903391572
+precison: 0.5621486570893192
+accuracy: 0.6016427104722792/n16/02/2019
+
+
+ C O N F U S I O N      M A T R I X  16/02/2019 00:24:37
+
+True Positives: 900
+True Negatives: 272
+False Positives: 701
+False Negatives: 75
+
+sensitivity: 0.9230769230769231
+specitivity: 0.2795477903391572
+precison: 0.5621486570893192
+accuracy: 0.6016427104722792/n16/02/2019
+
+
+ C O N F U S I O N      M A T R I X  16/02/2019 00:25:13
+
+True Positives: 900
+True Negatives: 272
+False Positives: 701
+False Negatives: 75
+
+sensitivity: 0.9230769230769231
+specitivity: 0.2795477903391572
+precison: 0.5621486570893192
+accuracy: 0.6016427104722792/n16/02/2019
+
+
+ C O N F U S I O N      M A T R I X  16/02/2019 00:25:20
+
+True Positives: 900
+True Negatives: 272
+False Positives: 701
+False Negatives: 75
+
+sensitivity: 0.9230769230769231
+specitivity: 0.2795477903391572
+precison: 0.5621486570893192
+accuracy: 0.6016427104722792/n16/02/2019
+
+
+ C O N F U S I O N      M A T R I X  16/02/2019 00:27:04
+
+True Positives: 947
+True Negatives: 551
+False Positives: 429
+False Negatives: 31
+
+sensitivity: 0.9683026584867076
+specitivity: 0.5622448979591836
+precison: 0.6882267441860465
+accuracy: 0.7650663942798774/n16/02/2019
+
+
+ C O N F U S I O N      M A T R I X  16/02/2019 01:25:25
+
+True Positives: 947
+True Negatives: 551
+False Positives: 429
+False Negatives: 31
+
+sensitivity: 0.9683026584867076
+specitivity: 0.5622448979591836
+precison: 0.6882267441860465
+accuracy: 0.7650663942798774/n16/02/2019
+
+
+ C O N F U S I O N      M A T R I X  16/02/2019 01:26:41
+
+True Positives: 947
+True Negatives: 551
+False Positives: 429
+False Negatives: 31
+
+sensitivity: 0.9683026584867076
+specitivity: 0.5622448979591836
+precison: 0.6882267441860465
+accuracy: 0.7650663942798774

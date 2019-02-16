@@ -3,6 +3,10 @@ import io
 import json
 import classifier
 import time
+import sys
+import codecs
+from tqdm import tqdm
+normalize =True
 filename= "sentiment.json"
 treshold = 5
 
@@ -59,34 +63,68 @@ c = classifier.Classifier("sentiment.json",False)
 
 
 
-f =open("data.csv",'r')
+f = codecs.open("data.csv",'r','utf-8',errors='ignore')
 reader = csv.reader(f)
 
 i=0
 
-for row in reader:
+print(reader)
 
+positive_sentences = []
+negative_sentences = []
+
+
+for row in tqdm(reader):
+    #print("reading row " + str(i))
+    #print(row)
+   
     if (row!=[]):
-
-
         if row[0]=="Wymaga uzupełnienia.":
             continue
         i+=1
-        row[0].strip(",").strip(".")
-        words = row[0].split(" ")
-        score = c.evaluate(row[0])
-        if i>15000:
-            if score == "Positive" and float(row[1])>treshold:
+        if (i <15000):
+            continue
+
+        
+        
+       
+        if float(row[1]) > treshold+2:
+            positive_sentences.append(row[0])
+        elif float(row[1]) <= treshold-2:
+            negative_sentences.append(row[0])
+
+num_positive_sentences = len(positive_sentences)
+num_negative_sentences = len(negative_sentences)
+
+
+
+lower_number = min(num_negative_sentences,num_positive_sentences)
+
+
+
+if(normalize):
+    
+    num_positive_sentences = lower_number
+    num_negative_sentences = lower_number
+
+
+
+for i in tqdm(range(num_positive_sentences)):
+    score = core = c.evaluate(positive_sentences[i])
+    if score == "Positive":
                 m.TP+=1
-            elif score == "Positive" and float(row[1])<treshold:
-                m.FP+=1
-            elif score == "Negative" and float(row[1])<treshold:
-                m.TN+=1
-            elif score == "Negative" and float(row[1])>treshold:
+    if score == "Negative":
                 m.FN+=1
 
-    if(i>20000):
-        break
+
+for i in tqdm(range(num_positive_sentences)):
+    score = core = c.evaluate(negative_sentences[i])
+    if score == "Negative":
+                m.TN+=1
+    if score == "Positive":
+                m.FP+=1
+
+
 print("Finished analyzing " + str(i) + "sentences")
 m.print_results()
 m.save_results()
