@@ -3,7 +3,7 @@ import json
 import codecs
 import Polish_sentiment
 filename= "sentiment.json"
-sentence ="no nie wiem w sumie"
+sentence ="nie podoba mi się ten test"
 
 
 file =codecs.open(filename, 'r', 'windows-1250',errors='ignore')
